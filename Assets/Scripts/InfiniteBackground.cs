@@ -3,44 +3,60 @@ using UnityEngine;
 
 public class FondoInfinito : MonoBehaviour
 {
-    [SerializeField] private GameObject fondoPrefab;   // Prefab con SpriteRenderer
-    [SerializeField] private Camera cam;               // Cámara ortográfica
-    [SerializeField] private float margen = 2f;        // Anticipación al generar/destruir
+    [SerializeField] private GameObject fondoPrefab;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float margen = 2f;
 
     private float ancho;
-    private float ultimoX;                             // Centro X del último fondo creado
-    private readonly Queue<GameObject> activos = new Queue<GameObject>();
+    private float origenX;
+    private readonly Dictionary<int, GameObject> activos = new Dictionary<int, GameObject>();
+    private readonly List<int> paraBorrar = new List<int>();
 
     void Start()
     {
         if (cam == null) cam = Camera.main;
 
-        // bounds ya tiene en cuenta la escala del prefab
         ancho = fondoPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
-
-        // Así el primer fondo se crea centrado en la cámara
-        ultimoX = cam.transform.position.x - ancho;
+        origenX = cam.transform.position.x;
     }
 
     void LateUpdate()
     {
         float mitadCamara = cam.orthographicSize * cam.aspect;
-        float bordeDerecho = cam.transform.position.x + mitadCamara;
-        float bordeIzquierdo = cam.transform.position.x - mitadCamara;
+        float izquierda = cam.transform.position.x - mitadCamara - margen;
+        float derecha = cam.transform.position.x + mitadCamara + margen;
 
-        // Crear fondos mientras el último no cubra el borde derecho de la cámara
-        while (ultimoX + ancho / 2f < bordeDerecho + margen)
+        // Rango de índices que deben existir
+        int indiceMin = IndiceEn(izquierda);
+        int indiceMax = IndiceEn(derecha);
+
+        // Crear los que falten
+        for (int i = indiceMin; i <= indiceMax; i++)
         {
-            ultimoX += ancho;
-            Vector3 pos = new Vector3(ultimoX, 0.2f, 0f);
-            GameObject nuevo = Instantiate(fondoPrefab, pos, Quaternion.identity, transform);
-            activos.Enqueue(nuevo);
+            if (!activos.ContainsKey(i))
+            {
+                Vector3 pos = new Vector3(origenX + i * ancho, 0.2f, 0f);
+                activos[i] = Instantiate(fondoPrefab, pos, Quaternion.identity, transform);
+            }
         }
 
-        // Destruir los que ya quedaron completamente fuera por la izquierda
-        while (activos.Count > 0 && activos.Peek().transform.position.x + ancho / 2f < bordeIzquierdo - margen)
+        // Destruir los que quedaron fuera del rango
+        paraBorrar.Clear();
+        foreach (int i in activos.Keys)
         {
-            Destroy(activos.Dequeue());
+            if (i < indiceMin || i > indiceMax)
+                paraBorrar.Add(i);
         }
+        foreach (int i in paraBorrar)
+        {
+            Destroy(activos[i]);
+            activos.Remove(i);
+        }
+    }
+
+    // Índice del fondo que contiene la posición X
+    private int IndiceEn(float x)
+    {
+        return Mathf.FloorToInt((x - origenX + ancho / 2f) / ancho);
     }
 }
