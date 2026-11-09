@@ -69,7 +69,8 @@
     },
     "dotnet.defaultSolution": "root-evil.slnx",
     "conventionalCommits.scopes": [
-        "scene",
-		"player"
+		"scene",
+		"player",
+		"UI"
 	]
 }

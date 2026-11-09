@@ -1,0 +1,40 @@
+using TMPro;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+	[SerializeField] private TMP_Text textoVidas;
+	[SerializeField] private TMP_Text textoCronometro;
+	private bool estaCorriendo = true;
+	private float tiempoTranscurrido;
+
+
+	public void ActualizarTextoCronometro()
+	{
+		if (estaCorriendo)
+		{
+			tiempoTranscurrido += Time.deltaTime;
+
+			int minutos = Mathf.FloorToInt(tiempoTranscurrido / 60);
+			int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60);
+
+			textoCronometro.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+		}
+	}
+
+	public void DetenerCronometro()
+	{
+		estaCorriendo = false;
+	}
+
+	public void ReiniciarCronometro()
+	{
+		tiempoTranscurrido = 0f;
+		estaCorriendo = true;
+	}
+
+	public void ActualizarVida(int vida)
+	{
+		textoVidas.text = "Vidas: " + vida;
+	}
+}
