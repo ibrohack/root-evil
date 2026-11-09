@@ -12,14 +12,18 @@ public class PlayerMovement : MonoBehaviour
 	public float velocidad;
 	public int maxSaltos = 2;
 	private int saltos;
+	public int maxVidas = 10;
+	private int vida;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
 
 	void Awake()
 	{
+		GameManager.Instance.ActualizarVida(maxVidas);
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		saltos = maxSaltos;
+		vida = maxVidas;
 	}
 
 	// Update is called once per frame
@@ -69,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
 			saltos = maxSaltos;
 			puedeSaltar = true;
 			anim.SetBool("TouchingGround", true);
+		}
+
+		if (collision.gameObject.tag == "Enemy")
+		{
+			vida--;
+			GameManager.Instance.ActualizarVida(vida);
 		}
 	}
 

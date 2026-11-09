@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Suelo
   - TriggerCamara
+  - Enemy
   layers:
   - Default
   - TransparentFX
