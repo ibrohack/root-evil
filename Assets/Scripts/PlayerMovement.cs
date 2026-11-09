@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	private Rigidbody2D rb;
 	private Animator anim;
 	private SpriteRenderer sr;
+	public CameraFollow cameraFollow;
 	public GameObject bala;
 	public float velocidad;
 	public float fuerzaDeSalto;
@@ -67,4 +69,19 @@ public class PlayerMovement : MonoBehaviour
 			puedeSaltar = true;
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.tag == "TriggerCamara")
+		{
+			if (cameraFollow.seguir)
+			{
+				cameraFollow.seguir = false;
+			} else
+			{
+				cameraFollow.seguir = true;
+			}
+		}
+	}
+
 }
