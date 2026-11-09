@@ -1385,6 +1385,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5248175372539981851, guid: 1840f3058a1fb444183bd255e647bdd0, type: 3}
+      propertyPath: velocidad
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248175372539981851, guid: 1840f3058a1fb444183bd255e647bdd0, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
