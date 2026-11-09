@@ -38,9 +38,10 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Vector2 input = InputSystem.actions["Move"].ReadValue<Vector2>();
 		Vector3 direccion = new Vector3(input.x, 0, 0);
+		anim.SetFloat("Speed", Mathf.Abs(input.x));
 		if (direccion.x < 0) {
 			transform.rotation = Quaternion.Euler(0, 180, 0);
-		} else {
+		} else if (direccion.x > 0) {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
 		transform.position += direccion * velocidad * Time.deltaTime;
@@ -48,21 +49,20 @@ public class PlayerMovement : MonoBehaviour
 
 	void Saltar()
 	{
-		if (InputSystem.actions["Jump"].WasPressedThisFrame()) {
-			if (puedeSaltar) {
-				rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
-				saltos--;
-				if (saltos <= 0)
-				{
-					puedeSaltar = false;
-				}
-			}
+		if (InputSystem.actions["Jump"].WasPressedThisFrame() && puedeSaltar)
+		{
+			bool esDoble = saltos < maxSaltos;
+			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
+			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
+			saltos--;
+			if (saltos <= 0) puedeSaltar = false;
 		}
 	}
 
 	void Disparar()
 	{
 		if (InputSystem.actions["Attack"].WasPressedThisFrame()) {
+			anim.SetTrigger("Shoot");
 			Instantiate(bala, cannon.position, Quaternion.Euler(0, 0, 90));
 		}
 	}
@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 		if (collision.gameObject.tag == "Suelo") {
 			saltos = maxSaltos;
 			puedeSaltar = true;
+			anim.SetBool("TouchingGround", true);
 		}
 
 		if (collision.gameObject.tag == "Enemy")
@@ -93,6 +94,11 @@ public class PlayerMovement : MonoBehaviour
 				cameraFollow.seguir = true;
 			}
 		}
+	}
+	void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("Suelo"))
+			anim.SetBool("TouchingGround", false);
 	}
 
 }
