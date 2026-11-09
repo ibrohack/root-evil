@@ -29,9 +29,12 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Movimiento();
-		Saltar();
-		Disparar();
+		if (vida > 0)
+		{
+			Movimiento();
+			Saltar();
+			Disparar();
+		}
 	}
 
 	void Movimiento()
@@ -63,8 +66,12 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (InputSystem.actions["Attack"].WasPressedThisFrame()) {
 			anim.SetTrigger("Shoot");
-			Instantiate(bala, cannon.position, Quaternion.Euler(0, 0, 90));
 		}
+	}
+
+	public void InstanciasBala()
+	{
+		Instantiate(bala, cannon.position, Quaternion.Euler(0, 0, 90));
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -79,7 +86,16 @@ public class PlayerMovement : MonoBehaviour
 		{
 			vida--;
 			GameManager.Instance.ActualizarVida(vida);
+			if (vida <= 0)
+			{
+				Muerte();
+			}
 		}
+	}
+
+	void Muerte()
+	{
+		anim.SetTrigger("d");
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
