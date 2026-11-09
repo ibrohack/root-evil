@@ -6,9 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
 	private Rigidbody2D rb;
 	private Animator anim;
-	private SpriteRenderer sr;
 	public CameraFollow cameraFollow;
 	public GameObject bala;
+	public Transform cannon;
 	public float velocidad;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
@@ -17,13 +17,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
-		sr = GetComponent<SpriteRenderer>();
-	}
-
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
-	{
-		
 	}
 
 	// Update is called once per frame
@@ -39,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
 		Vector2 input = InputSystem.actions["Move"].ReadValue<Vector2>();
 		Vector3 direccion = new Vector3(input.x, 0, 0);
 		if (direccion.x < 0) {
-			sr.flipX = true;
+			transform.rotation = Quaternion.Euler(0, 180, 0);
 		} else {
-			sr.flipX = false;
+			transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
 		transform.position += direccion * velocidad * Time.deltaTime;
 	}
@@ -59,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 	void Disparar()
 	{
 		if (InputSystem.actions["Attack"].WasPressedThisFrame()) {
-			Instantiate(bala, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f), Quaternion.Euler(0, 0, 90));
+			Instantiate(bala, cannon.position, Quaternion.Euler(0, 0, 90));
 		}
 	}
 

@@ -3,12 +3,12 @@ using UnityEngine;
 public class Bala : MonoBehaviour
 {
 	private Rigidbody2D rb;
+	public float direction;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		rb.AddForce(new Vector2(1000, 2));
+		rb.AddForce(new Vector2(1000 * direction, 2));
 		Destroy(gameObject, 1f);
 	}
 }
