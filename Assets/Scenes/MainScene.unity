@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7173404218545422210, guid: 4993e75fa9dd2ff42a7e4fdf89846d9f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 54eba4b5aa710cb42abf0ff5bc881052, type: 2}
     - target: {fileID: 8366570208693837687, guid: 4993e75fa9dd2ff42a7e4fdf89846d9f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -318,6 +322,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8551977201480348721, guid: 4993e75fa9dd2ff42a7e4fdf89846d9f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6411475550625019658, guid: caf3ed13bab9d9c47873bcf47206a802, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -853,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5c2f1ab32d9e3458c4efcd98dfb77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  target: {fileID: 1340636368}
+  target: {fileID: 0}
   smoothSpeed: 5
   offset: {x: 0, y: 0, z: -10}
   seguir: 0
@@ -936,11 +944,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1340636368 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6254375970587587798, guid: 4993e75fa9dd2ff42a7e4fdf89846d9f, type: 3}
-  m_PrefabInstance: {fileID: 202024168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1642938985
 GameObject:
   m_ObjectHideFlags: 0
