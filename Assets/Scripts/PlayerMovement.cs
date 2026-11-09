@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject bala;
 	public Transform cannon;
 	public float velocidad;
+	public int maxSaltos = 2;
+	private int saltos;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
 
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
+		saltos = maxSaltos;
 	}
 
 	// Update is called once per frame
@@ -44,7 +47,11 @@ public class PlayerMovement : MonoBehaviour
 		if (InputSystem.actions["Jump"].WasPressedThisFrame()) {
 			if (puedeSaltar) {
 				rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
-				puedeSaltar = false;
+				saltos--;
+				if (saltos <= 0)
+				{
+					puedeSaltar = false;
+				}
 			}
 		}
 	}
@@ -59,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.tag == "Suelo") {
+			saltos = maxSaltos;
 			puedeSaltar = true;
 		}
 	}
