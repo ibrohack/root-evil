@@ -67,8 +67,9 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-	"dotnet.defaultSolution": "root-evil.slnx",
-	"conventionalCommits.scopes": [
+    "dotnet.defaultSolution": "root-evil.slnx",
+    "conventionalCommits.scopes": [
+        "scene",
 		"player"
 	]
 }
