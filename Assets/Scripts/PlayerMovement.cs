@@ -49,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
 			transform.rotation = Quaternion.Euler(0, 0, 0);
 		}
 		transform.position += direccion * velocidad * Time.deltaTime;
+
+		if (rb.linearVelocity.y < 0)
+		{
+			anim.SetBool("TouchingGround", false);
+		}
 	}
 
 	void Saltar()
@@ -57,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			bool esDoble = saltos < maxSaltos;
 			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
+			anim.SetBool("TouchingGround", false);
 			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
 			saltos--;
 			if (saltos <= 0) puedeSaltar = false;
@@ -114,6 +120,14 @@ public class PlayerMovement : MonoBehaviour
 	void Muerte()
 	{
 		anim.SetTrigger("Dead");
+	}
+
+	void OnCollisionStay2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "Suelo")
+		{
+			anim.SetBool("TouchingGround", true);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
