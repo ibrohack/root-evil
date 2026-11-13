@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	public float velocidad;
 	public int maxSaltos = 2;
 	private int saltos;
-	public int maxVidas = 10;
+	public int maxVidas;
 	private int vida;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void InstanciasBala()
 	{
-		Instantiate(bala, cannon.position, Quaternion.Euler(0, 0, 90));
+		Instantiate(bala, cannon.position, Quaternion.identity);
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)

@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   cameraFollow: {fileID: 0}
-  bala: {fileID: 2233112876073998008, guid: a4b18b27baad2c546b62a212dc8d3a49, type: 3}
+  bala: {fileID: 400414172277970300, guid: a4b18b27baad2c546b62a212dc8d3a49, type: 3}
   cannon: {fileID: 2404958207629988127}
   velocidad: 5
   maxSaltos: 2
