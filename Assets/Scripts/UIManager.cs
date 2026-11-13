@@ -35,6 +35,6 @@ public class UIManager : MonoBehaviour
 
 	public void ActualizarVida(int vida)
 	{
-		textoVidas.text = "Vidas: " + vida;
+		textoVidas.text = "x " + vida;
 	}
 }
