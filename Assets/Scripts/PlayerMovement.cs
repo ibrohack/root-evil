@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 		if (vida > 0)
 		{
 			Movimiento();
-			Saltar();
-			Disparar();
+			//Saltar();
+			//Disparar();
 		}
 	}
 
@@ -56,9 +54,9 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	void Saltar()
+	public void Saltar()
 	{
-		if (InputSystem.actions["Jump"].WasPressedThisFrame() && puedeSaltar)
+		if (puedeSaltar)
 		{
 			bool esDoble = saltos < maxSaltos;
 			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
@@ -70,10 +68,12 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	void Disparar()
+	public void Disparar()
 	{
-		if (InputSystem.actions["Attack"].WasPressedThisFrame()) {
-			anim.SetTrigger("Shoot");
+		anim.SetTrigger("Shoot");
+		if (InputSystem.actions["Attack"].WasPressedThisFrame())
+		{
+			
 		}
 	}
 
