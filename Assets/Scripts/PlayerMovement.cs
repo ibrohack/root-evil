@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	private int vida;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
+	public bool puedeDisparar = true;
 
 	void Awake()
 	{
@@ -71,10 +72,6 @@ public class PlayerMovement : MonoBehaviour
 	public void Disparar()
 	{
 		anim.SetTrigger("Shoot");
-		if (InputSystem.actions["Attack"].WasPressedThisFrame())
-		{
-			
-		}
 	}
 
 	public void InstanciasBala()
@@ -149,6 +146,11 @@ public class PlayerMovement : MonoBehaviour
 		{
 			anim.SetBool("TouchingGround", false);
 		}
+	}
+
+	public void recuperarDisparo()
+	{
+		puedeDisparar = true;
 	}
 
 }
