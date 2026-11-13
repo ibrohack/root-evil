@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
 		} else
 		{
 			// Sigue al jugador en caso de detectarlo
-			transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * Time.deltaTime);
+			transform.position = Vector2.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, 0), velocidad * Time.deltaTime);
 		}
 	}
 
@@ -58,7 +58,6 @@ public class EnemyMovement : MonoBehaviour
 		if (collision.gameObject.tag == "Bala")
 		{
 			Destroy(gameObject);
-			Destroy(collision.gameObject);
 		}
 	}
 
