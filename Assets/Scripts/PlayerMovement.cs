@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
 			saltos--;
 			if (saltos <= 0) puedeSaltar = false;
+			if (gameObject.transform.parent != null) gameObject.transform.SetParent(null);
 		}
 	}
 
@@ -80,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
 			saltos = maxSaltos;
 			puedeSaltar = true;
 			anim.SetBool("TouchingGround", true);
+
+			if (collision.gameObject.name.Contains("Plataforma"))
+			{
+				gameObject.transform.SetParent(collision.gameObject.transform);
+			}
 		}
 
 		if (collision.gameObject.tag == "Enemy")
@@ -88,14 +94,25 @@ public class PlayerMovement : MonoBehaviour
 			GameManager.Instance.ActualizarVida(vida);
 			if (vida <= 0)
 			{
+				rb.gravityScale = 0.2f;
+				collision.collider.enabled = false;
 				Muerte();
 			}
+		}
+
+		if (collision.gameObject.tag == "KillZone")
+		{
+			vida = 0;
+			GameManager.Instance.ActualizarVida(vida);
+			rb.gravityScale = 0.2f;
+			collision.collider.enabled = false;
+			Muerte();
 		}
 	}
 
 	void Muerte()
 	{
-		anim.SetTrigger("d");
+		anim.SetTrigger("Dead");
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -114,7 +131,9 @@ public class PlayerMovement : MonoBehaviour
 	void OnCollisionExit2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("Suelo"))
+		{
 			anim.SetBool("TouchingGround", false);
+		}
 	}
 
 }

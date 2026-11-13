@@ -35,7 +35,7 @@ public class FondoInfinito : MonoBehaviour
         {
             if (!activos.ContainsKey(i))
             {
-                Vector3 pos = new Vector3(origenX + i * ancho, 0.2f, 0f);
+                Vector3 pos = new Vector3(origenX + i * ancho, 0.4f, 0f);
                 activos[i] = Instantiate(fondoPrefab, pos, Quaternion.identity, transform);
             }
         }

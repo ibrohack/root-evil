@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -7,10 +8,15 @@ public class EnemyMovement : MonoBehaviour
 	private int indiceActual = 0;
 	private GameObject player;
 	private bool seguimiento = false;
+	public float tiempoEspara = 3f;
+	private bool esperando = false;
 
 	void Update()
 	{
-		Movimiento();
+		if (!esperando)
+		{
+			Movimiento();
+		}
 	}
 
 	void Movimiento()
@@ -25,7 +31,10 @@ public class EnemyMovement : MonoBehaviour
 			// Si llega al waypoint actual, pasa al siguiente
 			if (Vector2.Distance(transform.position, destino.position) < 0.1f)
 			{
-				indiceActual = (indiceActual + 1) % waypoints.Length;
+				if (Vector2.Distance(transform.position, destino.position) < 0.1f)
+				{
+					StartCoroutine(EsperarWaypoint());
+				}
 			}
 		} else
 		{
@@ -33,6 +42,16 @@ public class EnemyMovement : MonoBehaviour
 			transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * Time.deltaTime);
 		}
 	}
+
+	IEnumerator EsperarWaypoint()
+    {
+        esperando = true;
+
+        yield return new WaitForSeconds(tiempoEspara);
+
+        indiceActual = (indiceActual + 1) % waypoints.Length;
+        esperando = false;
+    }
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{

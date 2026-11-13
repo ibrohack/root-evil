@@ -8,6 +8,7 @@ TagManager:
   - TriggerCamara
   - Enemy
   - Bala
+  - KillZone
   layers:
   - Default
   - TransparentFX
