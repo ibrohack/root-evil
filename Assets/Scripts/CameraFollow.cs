@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null && seguir)
         {
-			newPosition = new Vector3(target.position.x, 0, 0);
+			newPosition = new Vector3(target.position.x, -0.2f, 0);
             Vector3 desiredPosition = newPosition + offset;
             // Interpola suavemente entre la posición actual y la deseada
             transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);

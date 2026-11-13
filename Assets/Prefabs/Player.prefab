@@ -115,7 +115,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6007857137893288414, guid: 13435f64ca19d8a449b8f2411c044e8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -230,4 +230,6 @@ MonoBehaviour:
   bala: {fileID: 2233112876073998008, guid: a4b18b27baad2c546b62a212dc8d3a49, type: 3}
   cannon: {fileID: 2404958207629988127}
   velocidad: 5
+  maxSaltos: 2
+  maxVidas: 10
   fuerzaDeSalto: 10

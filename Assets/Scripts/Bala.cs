@@ -12,4 +12,12 @@ public class Bala : MonoBehaviour
 		rb.AddForce(new Vector2(player.transform.right.x * 1000, 2));
 		Destroy(gameObject, 1f);
 	}
+
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag != "Player")
+		{
+			Destroy(gameObject);
+		}
+	}
 }
