@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
 	private static UIManager Instance;
+	Animator anim;
 	[SerializeField] private TMP_Text textoVidas;
 	[SerializeField] private TMP_Text textoCronometro;
+	[SerializeField] private Image finishImage;
 	private bool estaCorriendo = true;
 	private float tiempoTranscurrido;
 
@@ -16,6 +19,8 @@ public class UIManager : MonoBehaviour
 			Instance = this;
 			DontDestroyOnLoad(Instance);
 		} else Destroy(this);
+
+		anim = finishImage.GetComponent<Animator>();
 	}
 
 	public void ActualizarTextoCronometro()
@@ -45,5 +50,10 @@ public class UIManager : MonoBehaviour
 	public void ActualizarVida(int vida)
 	{
 		textoVidas.text = "x " + vida;
+	}
+
+	public void TransicionFinish()
+	{
+		anim.SetTrigger("Change");
 	}
 }

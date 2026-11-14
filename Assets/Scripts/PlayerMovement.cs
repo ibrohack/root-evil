@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool puedeDisparar = true;
 	public bool invencible = false;
 	private int direccionMirada = 0;
+	public bool puedeMoverse = false;
 
 	void Awake()
 	{
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		if (Instance != this) return;
-		if (vida > 0)
+		if (vida > 0 && puedeMoverse)
 		{
 			Movimiento();
 			Saltar();
@@ -214,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			transform.SetParent(null);
 			DontDestroyOnLoad(gameObject);
-			SceneManager.LoadScene("TestLevel");
+			GameManager.Instance.ActualizarFinish();
 		}
 	}
 	void OnCollisionExit2D(Collision2D collision)
