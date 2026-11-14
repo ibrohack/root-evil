@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool puedeSaltar = true;
 	private bool puedeDisparar = true;
 	public bool invencible = false;
+	private int direccionMirada = 0;
 
 	void Awake()
 	{
@@ -77,8 +78,10 @@ public class PlayerMovement : MonoBehaviour
 		anim.SetFloat("Speed", Mathf.Abs(input.x));
 		if (direccion.x < 0) {
 			transform.rotation = Quaternion.Euler(0, 180, 0);
+			direccionMirada = -1;
 		} else if (direccion.x > 0) {
 			transform.rotation = Quaternion.Euler(0, 0, 0);
+			direccionMirada = 1;
 		}
 		transform.position += direccion * velocidad * Time.deltaTime;
 
@@ -143,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void InstanciasBala()
 	{
-		Instantiate(bala, cannon.position, Quaternion.identity);
+		Instantiate(bala, cannon.position, direccionMirada > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180));
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
