@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private PlatformMovement Instance;
+	private PlayerMovement Instance;
 	private Rigidbody2D rb;
 	private Animator anim;
 	public CameraFollow cameraFollow;
@@ -24,15 +25,31 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake()
 	{
-		if (Instance == null)
+		if (Instance != null && Instance != this)
 		{
-			DontDestroyOnLoad(gameObject);
-		} else Destroy(gameObject);
+			Destroy(gameObject);
+			return;
+		}
+
+		Instance = this;
+		DontDestroyOnLoad(gameObject);
 
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		saltos = maxSaltos;
 		vida = maxVidas;
+	}
+
+	void OnEnable()  { SceneManager.sceneLoaded += AlCargarEscena; }
+	void OnDisable() { SceneManager.sceneLoaded -= AlCargarEscena; }
+
+	void AlCargarEscena(Scene escena, LoadSceneMode modo)
+	{
+		GameObject spawn = GameObject.FindGameObjectWithTag("Respawn");
+		if (spawn != null) transform.position = spawn.transform.position;
+
+		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+		if (cam != null) cameraFollow = cam.GetComponent<CameraFollow>();
 	}
 
 	void Start()
@@ -187,6 +204,11 @@ public class PlayerMovement : MonoBehaviour
 			{
 				cameraFollow.seguir = true;
 			}
+		}
+
+		if (other.gameObject.tag == "Meta")
+		{
+			SceneManager.LoadScene("TestLevel");
 		}
 	}
 	void OnCollisionExit2D(Collision2D collision)

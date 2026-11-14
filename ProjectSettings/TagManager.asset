@@ -11,6 +11,7 @@ TagManager:
   - KillZone
   - ZonaOculta
   - GameManager
+  - Meta
   layers:
   - Default
   - TransparentFX
