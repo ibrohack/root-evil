@@ -6,8 +6,6 @@ public class EnemyMovement : MonoBehaviour
 	[SerializeField] private Transform[] waypoints;
 	[SerializeField] private float velocidad = 2f;
 	private int indiceActual = 0;
-	private GameObject player;
-	private bool seguimiento = false;
 	public float tiempoEspara = 3f;
 	private bool esperando = false;
 
@@ -21,25 +19,18 @@ public class EnemyMovement : MonoBehaviour
 
 	void Movimiento()
 	{
-		if (!seguimiento)
+		if (waypoints.Length == 0) return;
+
+		Transform destino = waypoints[indiceActual];
+		transform.position = Vector2.MoveTowards(transform.position, destino.position, velocidad * Time.deltaTime);
+
+		// Si llega al waypoint actual, pasa al siguiente
+		if (Vector2.Distance(transform.position, destino.position) < 0.1f)
 		{
-			if (waypoints.Length == 0) return;
-
-			Transform destino = waypoints[indiceActual];
-			transform.position = Vector2.MoveTowards(transform.position, destino.position, velocidad * Time.deltaTime);
-
-			// Si llega al waypoint actual, pasa al siguiente
 			if (Vector2.Distance(transform.position, destino.position) < 0.1f)
 			{
-				if (Vector2.Distance(transform.position, destino.position) < 0.1f)
-				{
-					StartCoroutine(EsperarWaypoint());
-				}
+				StartCoroutine(EsperarWaypoint());
 			}
-		} else
-		{
-			// Sigue al jugador en caso de detectarlo
-			transform.position = Vector2.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, 0), velocidad * Time.deltaTime);
 		}
 	}
 
@@ -58,15 +49,6 @@ public class EnemyMovement : MonoBehaviour
 		if (collision.gameObject.tag == "Bala")
 		{
 			Destroy(gameObject);
-		}
-	}
-
-	void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.gameObject.tag == "Player")
-		{
-			player = collision.gameObject;
-			seguimiento = true;
 		}
 	}
 }
