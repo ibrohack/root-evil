@@ -8,8 +8,12 @@ public class CameraFollow : MonoBehaviour
 	private Vector3 newPosition;
 	public bool seguir;
 
-    void LateUpdate()
+	void LateUpdate()
     {
+		if (target == null)
+		{
+			target = GameObject.FindGameObjectWithTag("Player").transform;
+		}
         if (target != null && seguir)
         {
 			newPosition = new Vector3(target.position.x, -0.2f, 0);

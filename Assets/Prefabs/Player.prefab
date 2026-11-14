@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: -1136618852305522958}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,4 +232,6 @@ MonoBehaviour:
   velocidad: 5
   maxSaltos: 2
   maxVidas: 10
+  vida: 0
   fuerzaDeSalto: 10
+  invencible: 0

@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+	private PlatformMovement Instance;
 	private Rigidbody2D rb;
 	private Animator anim;
 	public CameraFollow cameraFollow;
@@ -23,11 +24,21 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake()
 	{
-		GameManager.Instance.ActualizarVida(maxVidas);
+		if (Instance == null)
+		{
+			DontDestroyOnLoad(gameObject);
+		} else Destroy(gameObject);
+
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		saltos = maxSaltos;
 		vida = maxVidas;
+	}
+
+	void Start()
+	{
+		GameManager.Instance.ActualizarVida(maxVidas);
+		if (cameraFollow == null) cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 	}
 
 	// Update is called once per frame
