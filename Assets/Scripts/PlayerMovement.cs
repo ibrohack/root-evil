@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,14 +9,17 @@ public class PlayerMovement : MonoBehaviour
 	public CameraFollow cameraFollow;
 	public GameObject bala;
 	public Transform cannon;
+	private Coroutine corrutinaDisparoRapido;
+	private Coroutine corrutinaInvencible;
 	public float velocidad;
 	public int maxSaltos = 2;
 	private int saltos;
 	public int maxVidas;
-	private int vida;
+	public int vida;
 	public float fuerzaDeSalto;
 	private bool puedeSaltar = true;
-	public bool puedeDisparar = true;
+	private bool puedeDisparar = true;
+	public bool invencible = false;
 
 	void Awake()
 	{
@@ -32,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 		if (vida > 0)
 		{
 			Movimiento();
-			//Saltar();
-			//Disparar();
+			Saltar();
+			Disparar();
 		}
 	}
 
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Saltar()
 	{
-		if (puedeSaltar)
+		if (InputSystem.actions["Jump"].WasPressedThisFrame() && puedeSaltar)
 		{
 			bool esDoble = saltos < maxSaltos;
 			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
@@ -69,9 +73,43 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
+
+	public void ActivarInvencibilidad()
+	{
+		if (corrutinaInvencible != null) StopCoroutine(corrutinaInvencible);
+		corrutinaInvencible = StartCoroutine(PlayerInvencible());
+	}
+
+	public IEnumerator PlayerInvencible()
+	{
+		invencible = true;
+		yield return new WaitForSeconds(5f);
+
+		invencible = false;
+	}
+
+	public void ActivarDisparoRapido()
+	{
+		if (corrutinaDisparoRapido != null) StopCoroutine(corrutinaDisparoRapido);
+		corrutinaDisparoRapido = StartCoroutine(DisparoRapido());
+	}
+
+	public IEnumerator DisparoRapido()
+	{
+		anim.SetFloat("ShootSpeed", 5f);
+		yield return new WaitForSeconds(5f);
+
+		anim.SetFloat("ShootSpeed", 1f);
+	}
+
 	public void Disparar()
 	{
-		anim.SetTrigger("Shoot");
+		if (InputSystem.actions["Attack"].WasPressedThisFrame() && puedeDisparar)
+		{
+			puedeDisparar = false;
+			anim.SetTrigger("Shoot");
+
+		}
 	}
 
 	public void InstanciasBala()
@@ -92,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (collision.gameObject.tag == "Enemy")
+		if (collision.gameObject.tag == "Enemy" && !invencible)
 		{
 			vida--;
 			GameManager.Instance.ActualizarVida(vida);
