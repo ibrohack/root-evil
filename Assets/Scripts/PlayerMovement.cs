@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private PlayerMovement Instance;
+	private static PlayerMovement Instance;
 	private Rigidbody2D rb;
 	private Animator anim;
 	public CameraFollow cameraFollow;
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (Instance != this) return;
 		if (vida > 0)
 		{
 			Movimiento();
@@ -208,6 +209,8 @@ public class PlayerMovement : MonoBehaviour
 
 		if (other.gameObject.tag == "Meta")
 		{
+			transform.SetParent(null);
+			DontDestroyOnLoad(gameObject);
 			SceneManager.LoadScene("TestLevel");
 		}
 	}

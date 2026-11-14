@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-	private UIManager Instance;
+	private static UIManager Instance;
 	[SerializeField] private TMP_Text textoVidas;
 	[SerializeField] private TMP_Text textoCronometro;
 	private bool estaCorriendo = true;
