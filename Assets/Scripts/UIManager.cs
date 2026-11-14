@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 	private static UIManager Instance;
-	Animator anim;
+	private Animator anim;
 	[SerializeField] private TMP_Text textoVidas;
 	[SerializeField] private TMP_Text textoCronometro;
 	[SerializeField] private Image finishImage;
@@ -18,8 +18,11 @@ public class UIManager : MonoBehaviour
 		{
 			Instance = this;
 			DontDestroyOnLoad(Instance);
-		} else Destroy(this);
+		} else Destroy(gameObject);
+	}
 
+	void Start()
+	{
 		anim = finishImage.GetComponent<Animator>();
 	}
 
@@ -54,6 +57,6 @@ public class UIManager : MonoBehaviour
 
 	public void TransicionFinish()
 	{
-		anim.SetTrigger("Change");
+		if (anim != null) anim.SetTrigger("Change");
 	}
 }

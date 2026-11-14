@@ -8,7 +8,7 @@ public class Finish : MonoBehaviour
 	{
 		anim = GetComponent<Animator>();
 	}
-	void OnEnable()
+	void Start()
 	{
 		anim.SetTrigger("Change");
 	}

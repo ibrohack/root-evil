@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour
 		{
 			Instance = this;
 			DontDestroyOnLoad(Instance);
-		} else Destroy(this);
+		} else Destroy(gameObject);
 	}
 
 	void OnEnable()  { SceneManager.sceneLoaded += AlCargarEscena; }
+	void OnDisable() { SceneManager.sceneLoaded -= AlCargarEscena; }
 
 	void AlCargarEscena(Scene escena, LoadSceneMode modo)
 	{
@@ -51,9 +52,9 @@ public class GameManager : MonoBehaviour
 		switch(SceneManager.GetActiveScene().name)
 		{
 			case "Level1":
-				SceneManager.LoadScene("TestLevel");
+				SceneManager.LoadScene("Level2");
 				break;
-			case "TestLevel":
+			case "Level2":
 				SceneManager.LoadScene("Level1");
 				break;
 		}
