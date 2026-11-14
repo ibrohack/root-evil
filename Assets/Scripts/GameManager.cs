@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 		switch(SceneManager.GetActiveScene().name)
 		{
 			case "Level1":
-				SceneManager.LoadScene("Level2");
+				SceneManager.LoadScene("Level3");
 				break;
 			case "Level2":
 				SceneManager.LoadScene("Level1");

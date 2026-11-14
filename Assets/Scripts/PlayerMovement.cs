@@ -211,6 +211,11 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
+		if (other.gameObject.tag == "TriggerBoss")
+		{
+			cameraFollow.boss = !cameraFollow.boss;
+		}
+
 		if (other.gameObject.tag == "Meta")
 		{
 			transform.SetParent(null);
