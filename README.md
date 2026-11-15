@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="Assets/Sprites/IconoAplicacion.png" alt="Icono de Root Evil" width="160">
+  <img src="Assets/Sprites/IconoAplicacion.png" alt="Icono de Root of Evil" width="160">
 </p>
 
-# Root Evil
+# Root of Evil
 
 Juego de plataformas y disparos en 2D con scroll lateral para Android, hecho en Unity 6 como proyecto en equipo del módulo PMD (2º DAM). Corres, haces doble salto y disparas a lo largo de tres niveles, y en el último te enfrentas a un jefe. Las vidas y el tiempo pasan de un nivel al siguiente.
 
