@@ -17,6 +17,7 @@ public class ZonaOculta : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Player")
 		{
+			AudioManager.Reproducir(Sonido.ZonaOculta);
 			zonaOculta.SetActive(true);
 			tr.enabled = true;
 			gameObject.SetActive(false);
