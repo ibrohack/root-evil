@@ -1,40 +1,52 @@
+
 using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-	[SerializeField] private Transform[] waypoints;
-	[SerializeField] private float velocidad = 2f;
-	private int indiceActual = 0;
-	public float tiempoEspara = 3f;
-	private bool esperando = false;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float velocidad = 2f;
+    public float tiempoEspara = 3f;
+    public Animator animator;
 
-	void Update()
-	{
-		if (!esperando)
-		{
-			Movimiento();
-		}
-	}
+    private int indiceActual = 0;
+    private bool esperando = false;
+    private bool muerto = false;
 
-	void Movimiento()
-	{
-		if (waypoints.Length == 0) return;
+    void Start()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
+    }
 
-		Transform destino = waypoints[indiceActual];
-		transform.position = Vector2.MoveTowards(transform.position, destino.position, velocidad * Time.deltaTime);
+    void Update()
+    {
+        if (!esperando && !muerto)
+        {
+            Movimiento();
+        }
+    }
 
-		// Si llega al waypoint actual, pasa al siguiente
-		if (Vector2.Distance(transform.position, destino.position) < 0.1f)
-		{
-			if (Vector2.Distance(transform.position, destino.position) < 0.1f)
-			{
-				StartCoroutine(EsperarWaypoint());
-			}
-		}
-	}
+    void Movimiento()
+    {
+        if (waypoints.Length == 0) return;
 
-	IEnumerator EsperarWaypoint()
+        Transform destino = waypoints[indiceActual];
+
+        if (destino.position.x > transform.position.x)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
+
+        transform.position = Vector2.MoveTowards(transform.position, destino.position, velocidad * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, destino.position) < 0.1f)
+        {
+            StartCoroutine(EsperarWaypoint());
+        }
+    }
+
+    IEnumerator EsperarWaypoint()
     {
         esperando = true;
 
@@ -44,12 +56,26 @@ public class EnemyMovement : MonoBehaviour
         esperando = false;
     }
 
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.tag == "Bala")
-		{
-			AudioManager.Reproducir(Sonido.EnemigoMuerto);
-			Destroy(gameObject);
-		}
-	}
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bala") && !muerto)
+        {
+            StartCoroutine(Morir());
+        }
+    }
+
+    IEnumerator Morir()
+    {
+        muerto = true;
+        esperando = true;
+
+        AudioManager.Reproducir(Sonido.EnemigoMuerto);
+
+        if (animator != null)
+            animator.Play("Death");
+
+        yield return new WaitForSeconds(30f / 60f);
+
+        Destroy(gameObject);
+    }
 }
