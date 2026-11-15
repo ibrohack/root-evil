@@ -48,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Bala")
 		{
+			AudioManager.Reproducir(Sonido.EnemigoMuerto);
 			Destroy(gameObject);
 		}
 	}
