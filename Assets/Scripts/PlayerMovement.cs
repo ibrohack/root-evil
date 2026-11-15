@@ -98,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			bool esDoble = saltos < maxSaltos;
 			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
+			AudioManager.Reproducir(esDoble ? Sonido.DobleSalto : Sonido.Salto);
 			anim.SetBool("TouchingGround", false);
 			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
 			saltos--;
@@ -148,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
 	public void InstanciasBala()
 	{
 		Instantiate(bala, cannon.position, direccionMirada > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180));
+		AudioManager.Reproducir(Sonido.Disparo);
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -173,6 +175,10 @@ public class PlayerMovement : MonoBehaviour
 				collision.collider.enabled = false;
 				Muerte();
 			}
+			else
+			{
+				AudioManager.Reproducir(Sonido.Golpe);
+			}
 		}
 
 		if (collision.gameObject.tag == "KillZone")
@@ -188,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
 	void Muerte()
 	{
 		anim.SetTrigger("Dead");
+		AudioManager.Reproducir(Sonido.Muerte);
 	}
 
 	void OnCollisionStay2D(Collision2D collision)
@@ -215,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			transform.SetParent(null);
 			DontDestroyOnLoad(gameObject);
+			AudioManager.Reproducir(Sonido.Meta);
 			GameManager.Instance.ActualizarFinish();
 		}
 	}

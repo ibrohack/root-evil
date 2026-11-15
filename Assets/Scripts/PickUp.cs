@@ -46,6 +46,7 @@ public class PickUp : MonoBehaviour
 		if (collision.gameObject.tag == "Player")
 		{
 			PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+			AudioManager.Reproducir(Sonido.PickUp);
 			switch (tipo)
 			{
 				case Tipo.invencible:
