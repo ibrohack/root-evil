@@ -198,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
 		rb.gravityScale = 0.2f;
 		anim.SetTrigger("Dead");
 		AudioManager.Reproducir(Sonido.Muerte);
+		GameManager.Instance.JugadorMuerto();
 	}
 
 	void OnCollisionStay2D(Collision2D collision)
