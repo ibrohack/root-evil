@@ -59,4 +59,15 @@ public class UIManager : MonoBehaviour
 	{
 		if (anim != null) anim.SetTrigger("Change");
 	}
+
+	// Botones tactiles del HUD: se conectan en el OnClick de cada boton
+	public void BotonSaltar()
+	{
+		if (PlayerMovement.Instance != null) PlayerMovement.Instance.Saltar();
+	}
+
+	public void BotonDisparar()
+	{
+		if (PlayerMovement.Instance != null) PlayerMovement.Instance.Disparar();
+	}
 }

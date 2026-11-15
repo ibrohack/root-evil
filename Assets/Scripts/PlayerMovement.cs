@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private static PlayerMovement Instance;
+	public static PlayerMovement Instance;
 	private Rigidbody2D rb;
 	private Animator anim;
 	public CameraFollow cameraFollow;
@@ -75,12 +76,25 @@ public class PlayerMovement : MonoBehaviour
 			return;
 		}
 
-		if (vida > 0 && puedeMoverse)
+		if (PuedeActuar())
 		{
 			Movimiento();
-			Saltar();
-			Disparar();
+
+			// Teclado y mando. Los botones tactiles del HUD llaman a Saltar() y Disparar() directamente
+			if (InputSystem.actions["Jump"].WasPressedThisFrame()) Saltar();
+			if (InputSystem.actions["Attack"].WasPressedThisFrame() && !PunteroSobreUI()) Disparar();
 		}
+	}
+
+	bool PuedeActuar()
+	{
+		return vida > 0 && puedeMoverse && Time.timeScale > 0f;
+	}
+
+	// Evita disparar al hacer clic con el raton sobre un boton de la interfaz
+	static bool PunteroSobreUI()
+	{
+		return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
 	}
 
 	void Movimiento()
@@ -105,17 +119,16 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Saltar()
 	{
-		if (InputSystem.actions["Jump"].WasPressedThisFrame() && puedeSaltar)
-		{
-			bool esDoble = saltos < maxSaltos;
-			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
-			AudioManager.Reproducir(esDoble ? Sonido.DobleSalto : Sonido.Salto);
-			anim.SetBool("TouchingGround", false);
-			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
-			saltos--;
-			if (saltos <= 0) puedeSaltar = false;
-			if (gameObject.transform.parent != null) gameObject.transform.SetParent(null);
-		}
+		if (!PuedeActuar() || !puedeSaltar) return;
+
+		bool esDoble = saltos < maxSaltos;
+		anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
+		AudioManager.Reproducir(esDoble ? Sonido.DobleSalto : Sonido.Salto);
+		anim.SetBool("TouchingGround", false);
+		rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
+		saltos--;
+		if (saltos <= 0) puedeSaltar = false;
+		if (gameObject.transform.parent != null) gameObject.transform.SetParent(null);
 	}
 
 
@@ -149,12 +162,10 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Disparar()
 	{
-		if (InputSystem.actions["Attack"].WasPressedThisFrame() && puedeDisparar)
-		{
-			puedeDisparar = false;
-			anim.SetTrigger("Shoot");
+		if (!PuedeActuar() || !puedeDisparar) return;
 
-		}
+		puedeDisparar = false;
+		anim.SetTrigger("Shoot");
 	}
 
 	public void InstanciasBala()
