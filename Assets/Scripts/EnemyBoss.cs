@@ -18,6 +18,11 @@ public class EnemyBoss : MonoBehaviour
     public float rangoAtaque = 2.5f;
     // Segundos de espera entre un ataque y el siguiente
     public float tiempoEntreAtaques = 1.5f;
+    // Hasta donde llega la llamarada por delante del cuerpo del boss
+    public float alcanceGolpe = 1.5f;
+    // Segundos de la animacion Attack en los que la llamarada hace daño (frames a3 a a5)
+    public float inicioGolpe = 0.27f;
+    public float finGolpe = 0.67f;
 
     private int indiceActual = 0;
     private bool esperando = false;
@@ -108,7 +113,8 @@ public class EnemyBoss : MonoBehaviour
         return Vector2.Distance(centro, jugador.transform.position) <= rangoAtaque;
     }
 
-    // Se para, mira al Player y reproduce el ataque una vez
+    // Se para, mira al Player y reproduce el ataque una vez.
+    // Mientras sale la llamarada, si el Player esta delante le quita una vida (solo una por ataque)
     IEnumerator Atacar()
     {
         atacando = true;
@@ -116,12 +122,59 @@ public class EnemyBoss : MonoBehaviour
         MirarHacia(PlayerMovement.Instance.transform.position.x);
         animator.Play("Attack", 0, 0f);
 
-        yield return new WaitForSeconds(duracionAtaque);
+        bool haGolpeado = false;
+        float tiempo = 0f;
+        while (tiempo < duracionAtaque)
+        {
+            if (!haGolpeado && tiempo >= inicioGolpe && tiempo <= finGolpe && PlayerEnZonaGolpe())
+            {
+                PlayerMovement.Instance.RecibirDanio();
+                haGolpeado = true;
+            }
+
+            yield return null;
+            tiempo += Time.deltaTime;
+        }
 
         // Si estaba parado en un waypoint sigue en Idle; si no, vuelve a caminar
         animator.Play(esperando ? "Idle" : "Walk");
         siguienteAtaque = Time.time + tiempoEntreAtaques;
         atacando = false;
+    }
+
+    // Rectangulo delante del cuerpo del boss, del alto del cuerpo, hacia donde mira
+    Rect ZonaGolpe()
+    {
+        Bounds cuerpo = col.bounds;
+        // Con escala x negativa el boss mira a la derecha (ver MirarHacia)
+        float frente = transform.localScale.x < 0 ? cuerpo.max.x : cuerpo.min.x - alcanceGolpe;
+        return new Rect(frente, cuerpo.min.y, alcanceGolpe, cuerpo.size.y);
+    }
+
+    bool PlayerEnZonaGolpe()
+    {
+        PlayerMovement jugador = PlayerMovement.Instance;
+        if (jugador == null || jugador.vida <= 0 || col == null) return false;
+
+        Collider2D colJugador = jugador.GetComponent<Collider2D>();
+        if (colJugador == null) return false;
+
+        Bounds b = colJugador.bounds;
+        return ZonaGolpe().Overlaps(new Rect(b.min.x, b.min.y, b.size.x, b.size.y));
+    }
+
+    // Con el boss seleccionado en el Editor: amarillo = distancia a la que ataca, rojo = zona de la llamarada
+    void OnDrawGizmosSelected()
+    {
+        if (col == null) col = GetComponent<Collider2D>();
+        if (col == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(col.bounds.center, rangoAtaque);
+
+        Rect zona = ZonaGolpe();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(zona.center, zona.size);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

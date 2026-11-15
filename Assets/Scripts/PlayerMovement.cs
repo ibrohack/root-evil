@@ -170,23 +170,32 @@ public class PlayerMovement : MonoBehaviour
 
 		if (collision.gameObject.tag == "Enemy" && !invencible && vida > 0)
 		{
-			vida--;
-			GameManager.Instance.ActualizarVida(vida);
-			if (vida <= 0)
-			{
-				collision.collider.enabled = false;
-				Morir();
-			}
-			else
-			{
-				AudioManager.Reproducir(Sonido.Golpe);
-			}
+			RecibirDanio();
+			// Si ese golpe le mata, el enemigo deja de chocar con el Player
+			if (vida <= 0) collision.collider.enabled = false;
 		}
 
 		if (collision.gameObject.tag == "KillZone" && vida > 0)
 		{
 			collision.collider.enabled = false;
 			Morir();
+		}
+	}
+
+	// Quita una vida: al tocar un enemigo o por el ataque del boss. La invencibilidad lo bloquea
+	public void RecibirDanio()
+	{
+		if (invencible || vida <= 0) return;
+
+		vida--;
+		GameManager.Instance.ActualizarVida(vida);
+		if (vida <= 0)
+		{
+			Morir();
+		}
+		else
+		{
+			AudioManager.Reproducir(Sonido.Golpe);
 		}
 	}
 
