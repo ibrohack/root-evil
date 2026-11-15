@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ROOT EVIL
+  m_text: ROOT OF EVIL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f481081877264748ada3fc7ee6b8ab0, type: 2}
   m_sharedMaterial: {fileID: 1379757905343016194, guid: 2f481081877264748ada3fc7ee6b8ab0, type: 2}
