@@ -1,0 +1,1250 @@
+fileFormatVersion: 2
+guid: 6cbc52bc851608b40b374ea151b6a404
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2901578669405683368
+    second: tumbleweed_spritesheet-sheet_0
+  - first:
+      213: 8142749447012623040
+    second: tumbleweed_spritesheet-sheet_1
+  - first:
+      213: -6163743136275709800
+    second: tumbleweed_spritesheet-sheet_2
+  - first:
+      213: -5239751730432956536
+    second: tumbleweed_spritesheet-sheet_3
+  - first:
+      213: -4875596540564813847
+    second: tumbleweed_spritesheet-sheet_4
+  - first:
+      213: -8442035379163464549
+    second: tumbleweed_spritesheet-sheet_5
+  - first:
+      213: -4747380430800700081
+    second: tumbleweed_spritesheet-sheet_6
+  - first:
+      213: -5682245098041555122
+    second: tumbleweed_spritesheet-sheet_7
+  - first:
+      213: 733567997632390216
+    second: tumbleweed_spritesheet-sheet_8
+  - first:
+      213: -7882011351055531486
+    second: tumbleweed_spritesheet-sheet_9
+  - first:
+      213: 8866139058501748427
+    second: tumbleweed_spritesheet-sheet_10
+  - first:
+      213: 6364039808736002903
+    second: tumbleweed_spritesheet-sheet_11
+  - first:
+      213: -7776929783849296451
+    second: tumbleweed_spritesheet-sheet_12
+  - first:
+      213: 2072420988229364469
+    second: tumbleweed_spritesheet-sheet_13
+  - first:
+      213: 4546055899680146507
+    second: tumbleweed_spritesheet-sheet_14
+  - first:
+      213: 8465742311834611477
+    second: tumbleweed_spritesheet-sheet_15
+  - first:
+      213: -1349908052828661457
+    second: tumbleweed_spritesheet-sheet_16
+  - first:
+      213: 3802661169740450713
+    second: tumbleweed_spritesheet-sheet_17
+  - first:
+      213: -4900236777508237717
+    second: tumbleweed_spritesheet-sheet_18
+  - first:
+      213: 8874026626053874185
+    second: tumbleweed_spritesheet-sheet_19
+  - first:
+      213: -6258049460974703523
+    second: tumbleweed_spritesheet-sheet_20
+  - first:
+      213: 2288348561515344799
+    second: tumbleweed_spritesheet-sheet_21
+  - first:
+      213: 8801297086749747800
+    second: tumbleweed_spritesheet-sheet_22
+  - first:
+      213: -8861182250501392865
+    second: tumbleweed_spritesheet-sheet_23
+  - first:
+      213: 6991014367117448044
+    second: tumbleweed_spritesheet-sheet_24
+  - first:
+      213: 1353676797767940630
+    second: tumbleweed_spritesheet-sheet_25
+  - first:
+      213: -994163814415473539
+    second: tumbleweed_spritesheet-sheet_26
+  - first:
+      213: -8996905639440349171
+    second: tumbleweed_spritesheet-sheet_27
+  - first:
+      213: 2997118646390466588
+    second: tumbleweed_spritesheet-sheet_28
+  - first:
+      213: 994656333772165276
+    second: tumbleweed_spritesheet-sheet_29
+  - first:
+      213: 7584927276842415883
+    second: tumbleweed_spritesheet-sheet_30
+  - first:
+      213: -4695888250693148385
+    second: tumbleweed_spritesheet-sheet_31
+  - first:
+      213: -8884153565513311432
+    second: tumbleweed_spritesheet-sheet_32
+  - first:
+      213: -3234400919380738125
+    second: tumbleweed_spritesheet-sheet_33
+  - first:
+      213: -4098304405170250494
+    second: tumbleweed_spritesheet-sheet_34
+  - first:
+      213: 8472683567024033310
+    second: tumbleweed_spritesheet-sheet_35
+  - first:
+      213: 2297197238202068506
+    second: tumbleweed_spritesheet-sheet_36
+  - first:
+      213: 4161394378923735735
+    second: tumbleweed_spritesheet-sheet_37
+  - first:
+      213: -5089029839574417207
+    second: tumbleweed_spritesheet-sheet_38
+  - first:
+      213: 8621965204481040364
+    second: tumbleweed_spritesheet-sheet_39
+  - first:
+      213: -7436221371833050620
+    second: tumbleweed_spritesheet-sheet_40
+  - first:
+      213: 3589362133451828156
+    second: tumbleweed_spritesheet-sheet_41
+  - first:
+      213: 5734336848053601914
+    second: tumbleweed_spritesheet-sheet_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 143
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aeb6c53d6a744820800000000000000
+      internalID: 2901578669405683368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 143
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2223cda7bd00170800000000000000
+      internalID: 8142749447012623040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 143
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 890c883464cf57aa0800000000000000
+      internalID: -6163743136275709800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 135
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8872e440099a847b0800000000000000
+      internalID: -5239751730432956536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 143
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e7c28347c6665cb0800000000000000
+      internalID: -4875596540564813847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 143
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9c7eabec8dd7da80800000000000000
+      internalID: -8442035379163464549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 143
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4dbb70a6aaed1eb0800000000000000
+      internalID: -4747380430800700081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 143
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e47478c603c9421b0800000000000000
+      internalID: -5682245098041555122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 143
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 844297d05382e2a00800000000000000
+      internalID: 733567997632390216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 100
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2220db8df687d9290800000000000000
+      internalID: -7882011351055531486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 133
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc68637bf7ada0b70800000000000000
+      internalID: 8866139058501748427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 104
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7538728ec7c915850800000000000000
+      internalID: 6364039808736002903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 95
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbdd186c09bc21490800000000000000
+      internalID: -7776929783849296451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 95
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5faa97c98e7b2cc10800000000000000
+      internalID: 2072420988229364469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 95
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44018531c5d61f30800000000000000
+      internalID: 4546055899680146507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 47
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f65e877cb5c7570800000000000000
+      internalID: 8465742311834611477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 48
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2955bf27c9244de0800000000000000
+      internalID: -1349908052828661457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 49
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99b0d8fbf24c5c430800000000000000
+      internalID: 3802661169740450713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 48
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e01590d9cdefbb0800000000000000
+      internalID: -4900236777508237717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 47
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902ac452330e62b70800000000000000
+      internalID: 8874026626053874185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 47
+        width: 41
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c27cbfb21f629a0800000000000000
+      internalID: -6258049460974703523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 49
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93f56b74e8d1cf10800000000000000
+      internalID: 2288348561515344799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 32
+        width: 39
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a2662b11d742a70800000000000000
+      internalID: 8801297086749747800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f163ed411b1c60580800000000000000
+      internalID: -8861182250501392865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6310b3e682150160800000000000000
+      internalID: 6991014367117448044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 28
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a75af10e939c210800000000000000
+      internalID: 1353676797767940630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 29
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d74e73137450432f0800000000000000
+      internalID: -994163814415473539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 24
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0803731df1942380800000000000000
+      internalID: -8996905639440349171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 24
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18adcb8787e79920800000000000000
+      internalID: 2997118646390466588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 26
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9015186aaabdcd00800000000000000
+      internalID: 994656333772165276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 27
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b07fc5feb23134960800000000000000
+      internalID: 7584927276842415883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 29
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f112180148ad4deb0800000000000000
+      internalID: -4695888250693148385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 30
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b1f85076525b480800000000000000
+      internalID: -8884153565513311432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 0
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf3d1b10891d13d0800000000000000
+      internalID: -3234400919380738125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d98647bd5ef17c0800000000000000
+      internalID: -4098304405170250494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 39
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1ec1c260d4059570800000000000000
+      internalID: 8472683567024033310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 0
+        width: 43
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1eea0297b841ef10800000000000000
+      internalID: 2297197238202068506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 13
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba7e0eb32e30c930800000000000000
+      internalID: 4161394378923735735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 12
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c0cdc0e2522069b0800000000000000
+      internalID: -5089029839574417207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 16
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cefdede1caf57a770800000000000000
+      internalID: 8621965204481040364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 12
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a19b4af0c3dc890800000000000000
+      internalID: -7436221371833050620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 47
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb62a6d7d9ffc130800000000000000
+      internalID: 3589362133451828156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tumbleweed_spritesheet-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 0
+        width: 47
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a760ba24bf4749f40800000000000000
+      internalID: 5734336848053601914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tumbleweed_spritesheet-sheet_0: 2901578669405683368
+      tumbleweed_spritesheet-sheet_1: 8142749447012623040
+      tumbleweed_spritesheet-sheet_10: 8866139058501748427
+      tumbleweed_spritesheet-sheet_11: 6364039808736002903
+      tumbleweed_spritesheet-sheet_12: -7776929783849296451
+      tumbleweed_spritesheet-sheet_13: 2072420988229364469
+      tumbleweed_spritesheet-sheet_14: 4546055899680146507
+      tumbleweed_spritesheet-sheet_15: 8465742311834611477
+      tumbleweed_spritesheet-sheet_16: -1349908052828661457
+      tumbleweed_spritesheet-sheet_17: 3802661169740450713
+      tumbleweed_spritesheet-sheet_18: -4900236777508237717
+      tumbleweed_spritesheet-sheet_19: 8874026626053874185
+      tumbleweed_spritesheet-sheet_2: -6163743136275709800
+      tumbleweed_spritesheet-sheet_20: -6258049460974703523
+      tumbleweed_spritesheet-sheet_21: 2288348561515344799
+      tumbleweed_spritesheet-sheet_22: 8801297086749747800
+      tumbleweed_spritesheet-sheet_23: -8861182250501392865
+      tumbleweed_spritesheet-sheet_24: 6991014367117448044
+      tumbleweed_spritesheet-sheet_25: 1353676797767940630
+      tumbleweed_spritesheet-sheet_26: -994163814415473539
+      tumbleweed_spritesheet-sheet_27: -8996905639440349171
+      tumbleweed_spritesheet-sheet_28: 2997118646390466588
+      tumbleweed_spritesheet-sheet_29: 994656333772165276
+      tumbleweed_spritesheet-sheet_3: -5239751730432956536
+      tumbleweed_spritesheet-sheet_30: 7584927276842415883
+      tumbleweed_spritesheet-sheet_31: -4695888250693148385
+      tumbleweed_spritesheet-sheet_32: -8884153565513311432
+      tumbleweed_spritesheet-sheet_33: -3234400919380738125
+      tumbleweed_spritesheet-sheet_34: -4098304405170250494
+      tumbleweed_spritesheet-sheet_35: 8472683567024033310
+      tumbleweed_spritesheet-sheet_36: 2297197238202068506
+      tumbleweed_spritesheet-sheet_37: 4161394378923735735
+      tumbleweed_spritesheet-sheet_38: -5089029839574417207
+      tumbleweed_spritesheet-sheet_39: 8621965204481040364
+      tumbleweed_spritesheet-sheet_4: -4875596540564813847
+      tumbleweed_spritesheet-sheet_40: -7436221371833050620
+      tumbleweed_spritesheet-sheet_41: 3589362133451828156
+      tumbleweed_spritesheet-sheet_42: 5734336848053601914
+      tumbleweed_spritesheet-sheet_5: -8442035379163464549
+      tumbleweed_spritesheet-sheet_6: -4747380430800700081
+      tumbleweed_spritesheet-sheet_7: -5682245098041555122
+      tumbleweed_spritesheet-sheet_8: 733567997632390216
+      tumbleweed_spritesheet-sheet_9: -7882011351055531486
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

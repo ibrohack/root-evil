@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-	private static PlayerMovement Instance;
+	public static PlayerMovement Instance;
 	private Rigidbody2D rb;
 	private Animator anim;
 	public CameraFollow cameraFollow;
@@ -24,52 +24,58 @@ public class PlayerMovement : MonoBehaviour
 	public bool invencible = false;
 	private int direccionMirada = 0;
 	public bool puedeMoverse = false;
+	public float limiteCaida = -8f;
 
 	void Awake()
 	{
-		if (Instance != null && Instance != this)
-		{
-			Destroy(gameObject);
-			return;
-		}
-
+		// Cada nivel tiene su propio Player: no sobrevive al cambio de escena
 		Instance = this;
-		DontDestroyOnLoad(gameObject);
 
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		saltos = maxSaltos;
-		vida = maxVidas;
-	}
 
-	void OnEnable()  { SceneManager.sceneLoaded += AlCargarEscena; }
-	void OnDisable() { SceneManager.sceneLoaded -= AlCargarEscena; }
-
-	void AlCargarEscena(Scene escena, LoadSceneMode modo)
-	{
-		GameObject spawn = GameObject.FindGameObjectWithTag("Respawn");
-		if (spawn != null) transform.position = spawn.transform.position;
-
-		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-		if (cam != null) cameraFollow = cam.GetComponent<CameraFollow>();
+		// Las vidas vienen del nivel anterior. 0 significa partida nueva: se empieza con el maximo
+		vida = DatosPartida.vidas > 0 ? DatosPartida.vidas : maxVidas;
 	}
 
 	void Start()
 	{
-		GameManager.Instance.ActualizarVida(maxVidas);
+		GameManager.Instance.ActualizarVida(vida);
 		if (cameraFollow == null) cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (Instance != this) return;
-		if (vida > 0 && puedeMoverse)
+		// Si cae por debajo del nivel muere, igual que al tocar la KillZone
+		if (vida > 0 && transform.position.y < limiteCaida)
+		{
+			rb.linearVelocity = Vector2.zero;
+			rb.simulated = false;
+			Morir();
+			return;
+		}
+
+		if (PuedeActuar())
 		{
 			Movimiento();
-			Saltar();
-			Disparar();
+
+			// Teclado y mando. Los botones tactiles del HUD llaman a Saltar() y Disparar() directamente
+			if (InputSystem.actions["Jump"].WasPressedThisFrame()) Saltar();
+			if (InputSystem.actions["Attack"].WasPressedThisFrame() && !PunteroSobreUI()) Disparar();
 		}
+	}
+
+	bool PuedeActuar()
+	{
+		return vida > 0 && puedeMoverse && Time.timeScale > 0f;
+	}
+
+	// Evita disparar al hacer clic con el raton sobre un boton de la interfaz
+	static bool PunteroSobreUI()
+	{
+		return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
 	}
 
 	void Movimiento()
@@ -94,16 +100,16 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Saltar()
 	{
-		if (InputSystem.actions["Jump"].WasPressedThisFrame() && puedeSaltar)
-		{
-			bool esDoble = saltos < maxSaltos;
-			anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
-			anim.SetBool("TouchingGround", false);
-			rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
-			saltos--;
-			if (saltos <= 0) puedeSaltar = false;
-			if (gameObject.transform.parent != null) gameObject.transform.SetParent(null);
-		}
+		if (!PuedeActuar() || !puedeSaltar) return;
+
+		bool esDoble = saltos < maxSaltos;
+		anim.SetTrigger(esDoble ? "DoubleJump" : "Jump");
+		AudioManager.Reproducir(esDoble ? Sonido.DobleSalto : Sonido.Salto);
+		anim.SetBool("TouchingGround", false);
+		rb.AddForce(Vector3.up * fuerzaDeSalto, ForceMode2D.Impulse);
+		saltos--;
+		if (saltos <= 0) puedeSaltar = false;
+		if (gameObject.transform.parent != null) gameObject.transform.SetParent(null);
 	}
 
 
@@ -137,17 +143,16 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Disparar()
 	{
-		if (InputSystem.actions["Attack"].WasPressedThisFrame() && puedeDisparar)
-		{
-			puedeDisparar = false;
-			anim.SetTrigger("Shoot");
+		if (!PuedeActuar() || !puedeDisparar) return;
 
-		}
+		puedeDisparar = false;
+		anim.SetTrigger("Shoot");
 	}
 
 	public void InstanciasBala()
 	{
 		Instantiate(bala, cannon.position, direccionMirada > 0 ? Quaternion.identity : Quaternion.Euler(0, 0, 180));
+		AudioManager.Reproducir(Sonido.Disparo);
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -163,31 +168,37 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (collision.gameObject.tag == "Enemy" && !invencible)
+		if (collision.gameObject.tag == "Enemy" && !invencible && vida > 0)
 		{
 			vida--;
 			GameManager.Instance.ActualizarVida(vida);
 			if (vida <= 0)
 			{
-				rb.gravityScale = 0.2f;
 				collision.collider.enabled = false;
-				Muerte();
+				Morir();
+			}
+			else
+			{
+				AudioManager.Reproducir(Sonido.Golpe);
 			}
 		}
 
-		if (collision.gameObject.tag == "KillZone")
+		if (collision.gameObject.tag == "KillZone" && vida > 0)
 		{
-			vida = 0;
-			GameManager.Instance.ActualizarVida(vida);
-			rb.gravityScale = 0.2f;
 			collision.collider.enabled = false;
-			Muerte();
+			Morir();
 		}
 	}
 
-	void Muerte()
+	// Unico punto de muerte: enemigo, KillZone o caida fuera del nivel
+	void Morir()
 	{
+		vida = 0;
+		GameManager.Instance.ActualizarVida(vida);
+		rb.gravityScale = 0.2f;
 		anim.SetTrigger("Dead");
+		AudioManager.Reproducir(Sonido.Muerte);
+		GameManager.Instance.JugadorMuerto();
 	}
 
 	void OnCollisionStay2D(Collision2D collision)
@@ -216,10 +227,8 @@ public class PlayerMovement : MonoBehaviour
 			cameraFollow.boss = !cameraFollow.boss;
 		}
 
-		if (other.gameObject.tag == "Meta")
+		if (other.gameObject.tag == "Meta" && vida > 0)
 		{
-			transform.SetParent(null);
-			DontDestroyOnLoad(gameObject);
 			GameManager.Instance.ActualizarFinish();
 		}
 	}

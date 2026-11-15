@@ -231,7 +231,7 @@ MonoBehaviour:
   cannon: {fileID: 2404958207629988127}
   velocidad: 5
   maxSaltos: 2
-  maxVidas: 10
+  maxVidas: 3
   vida: 0
   fuerzaDeSalto: 10
   invencible: 0
