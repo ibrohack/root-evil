@@ -91,6 +91,10 @@ public class EnemyBoss : MonoBehaviour
 
         AudioManager.Reproducir(Sonido.EnemigoMuerto);
 
+        // Libera la camara de la zona del boss para que vuelva a seguir al Player hasta la bandera
+        CameraFollow cameraFollow = Camera.main != null ? Camera.main.GetComponent<CameraFollow>() : null;
+        if (cameraFollow != null) cameraFollow.boss = false;
+
         gameObject.SetActive(false);
     }
 }
