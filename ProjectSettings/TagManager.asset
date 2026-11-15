@@ -12,6 +12,7 @@ TagManager:
   - ZonaOculta
   - GameManager
   - Meta
+  - TriggerBoss
   layers:
   - Default
   - TransparentFX
