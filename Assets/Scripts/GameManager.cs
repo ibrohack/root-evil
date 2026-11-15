@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
-	public int maxVidas;
 	[SerializeField] private string escenaMenu = "MainMenu";
 	[SerializeField] private string primerNivel = "Level1";
 	[SerializeField] private float esperaGameOver = 1.2f;   // segundos para ver la animacion de muerte
