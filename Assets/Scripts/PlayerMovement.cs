@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool invencible = false;
 	private int direccionMirada = 0;
 	public bool puedeMoverse = false;
+	public float limiteCaida = -8f;
 
 	void Awake()
 	{
@@ -64,6 +65,16 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		if (Instance != this) return;
+
+		// Si cae por debajo del nivel muere, igual que al tocar la KillZone
+		if (vida > 0 && transform.position.y < limiteCaida)
+		{
+			rb.linearVelocity = Vector2.zero;
+			rb.simulated = false;
+			Morir();
+			return;
+		}
+
 		if (vida > 0 && puedeMoverse)
 		{
 			Movimiento();
@@ -165,15 +176,14 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (collision.gameObject.tag == "Enemy" && !invencible)
+		if (collision.gameObject.tag == "Enemy" && !invencible && vida > 0)
 		{
 			vida--;
 			GameManager.Instance.ActualizarVida(vida);
 			if (vida <= 0)
 			{
-				rb.gravityScale = 0.2f;
 				collision.collider.enabled = false;
-				Muerte();
+				Morir();
 			}
 			else
 			{
@@ -181,18 +191,19 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (collision.gameObject.tag == "KillZone")
+		if (collision.gameObject.tag == "KillZone" && vida > 0)
 		{
-			vida = 0;
-			GameManager.Instance.ActualizarVida(vida);
-			rb.gravityScale = 0.2f;
 			collision.collider.enabled = false;
-			Muerte();
+			Morir();
 		}
 	}
 
-	void Muerte()
+	// Unico punto de muerte: enemigo, KillZone o caida fuera del nivel
+	void Morir()
 	{
+		vida = 0;
+		GameManager.Instance.ActualizarVida(vida);
+		rb.gravityScale = 0.2f;
 		anim.SetTrigger("Dead");
 		AudioManager.Reproducir(Sonido.Muerte);
 	}
