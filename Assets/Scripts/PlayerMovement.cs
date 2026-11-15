@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,44 +28,26 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake()
 	{
-		if (Instance != null && Instance != this)
-		{
-			Destroy(gameObject);
-			return;
-		}
-
+		// Cada nivel tiene su propio Player: no sobrevive al cambio de escena
 		Instance = this;
-		DontDestroyOnLoad(gameObject);
 
 		rb = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator>();
 		saltos = maxSaltos;
-		vida = maxVidas;
-	}
 
-	void OnEnable()  { SceneManager.sceneLoaded += AlCargarEscena; }
-	void OnDisable() { SceneManager.sceneLoaded -= AlCargarEscena; }
-
-	void AlCargarEscena(Scene escena, LoadSceneMode modo)
-	{
-		GameObject spawn = GameObject.FindGameObjectWithTag("Respawn");
-		if (spawn != null) transform.position = spawn.transform.position;
-
-		GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-		if (cam != null) cameraFollow = cam.GetComponent<CameraFollow>();
+		// Las vidas vienen del nivel anterior. 0 significa partida nueva: se empieza con el maximo
+		vida = DatosPartida.vidas > 0 ? DatosPartida.vidas : maxVidas;
 	}
 
 	void Start()
 	{
-		GameManager.Instance.ActualizarVida(maxVidas);
+		GameManager.Instance.ActualizarVida(vida);
 		if (cameraFollow == null) cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (Instance != this) return;
-
 		// Si cae por debajo del nivel muere, igual que al tocar la KillZone
 		if (vida > 0 && transform.position.y < limiteCaida)
 		{
@@ -240,11 +221,8 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (other.gameObject.tag == "Meta")
+		if (other.gameObject.tag == "Meta" && vida > 0)
 		{
-			transform.SetParent(null);
-			DontDestroyOnLoad(gameObject);
-			AudioManager.Reproducir(Sonido.Meta);
 			GameManager.Instance.ActualizarFinish();
 		}
 	}

@@ -1,62 +1,67 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
-	[SerializeField] private UIManager uIManager;
-	[SerializeField] private PlayerMovement player;
 	public int maxVidas;
+	private bool nivelTerminado = false;
 
 	public void Awake()
 	{
-		if (Instance == null)
-		{
-			Instance = this;
-			DontDestroyOnLoad(Instance);
-		} else Destroy(gameObject);
-	}
-
-	void OnEnable()  { SceneManager.sceneLoaded += AlCargarEscena; }
-	void OnDisable() { SceneManager.sceneLoaded -= AlCargarEscena; }
-
-	void AlCargarEscena(Scene escena, LoadSceneMode modo)
-	{
-		ActualizarFinish();
+		// Cada nivel tiene su propio GameManager: no sobrevive al cambio de escena
+		Instance = this;
+		Time.timeScale = 1f;
 	}
 
 	public void BloquearPlayer()
 	{
-		player.puedeMoverse = !player.puedeMoverse;
+		PlayerMovement player = PlayerMovement.Instance;
+		if (player != null) player.puedeMoverse = !player.puedeMoverse;
 	}
 
     void Update()
     {
-		uIManager.ActualizarTextoCronometro();
+		if (UIManager.Instance != null) UIManager.Instance.ActualizarTextoCronometro();
     }
 
 	public void ActualizarVida(int vida)
 	{
-		uIManager.ActualizarVida(vida);
+		if (UIManager.Instance != null) UIManager.Instance.ActualizarVida(vida);
 	}
 
+	// El jugador ha tocado la meta: se guardan vidas y tiempo para el siguiente nivel y empieza la transicion
 	public void ActualizarFinish()
 	{
-		uIManager.TransicionFinish();
+		if (nivelTerminado) return;
+		nivelTerminado = true;
+
+		AudioManager.Reproducir(Sonido.Meta);
+		UIManager.Instance.DetenerCronometro();
+		DatosPartida.vidas = PlayerMovement.Instance.vida;
+		DatosPartida.tiempo = UIManager.Instance.Tiempo;
+		UIManager.Instance.TransicionFinish();
 	}
 
+	// La llama el evento de la animacion de transicion (Finish.CambiarEscena).
+	// El orden de los niveles es el de la lista de escenas de Build Profiles.
 	public void CambioDeEscena()
 	{
-		switch(SceneManager.GetActiveScene().name)
+		int siguiente = SceneManager.GetActiveScene().buildIndex + 1;
+		if (siguiente < SceneManager.sceneCountInBuildSettings)
 		{
-			case "Level1":
-				SceneManager.LoadScene("Level2");
-				break;
-			case "Level2":
-				SceneManager.LoadScene("Level1");
-				break;
+			SceneManager.LoadScene(siguiente);
 		}
+		else
+		{
+			Victoria();
+		}
+	}
+
+	// Ultimo nivel superado: partida nueva desde la primera escena
+	public void Victoria()
+	{
+		DatosPartida.Nueva();
+		SceneManager.LoadScene(0);
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-	private static UIManager Instance;
+	public static UIManager Instance;
 	private Animator anim;
 	[SerializeField] private TMP_Text textoVidas;
 	[SerializeField] private TMP_Text textoCronometro;
@@ -14,16 +14,17 @@ public class UIManager : MonoBehaviour
 
 	public void Awake()
 	{
-		if (Instance == null)
-		{
-			Instance = this;
-			DontDestroyOnLoad(Instance);
-		} else Destroy(gameObject);
+		// Cada nivel tiene su propio HUD: no sobrevive al cambio de escena
+		Instance = this;
+		if (finishImage != null) anim = finishImage.GetComponent<Animator>();
+
+		// El cronometro continua desde el tiempo acumulado en los niveles anteriores
+		tiempoTranscurrido = DatosPartida.tiempo;
 	}
 
-	void Start()
+	public float Tiempo
 	{
-		anim = finishImage.GetComponent<Animator>();
+		get { return tiempoTranscurrido; }
 	}
 
 	public void ActualizarTextoCronometro()
