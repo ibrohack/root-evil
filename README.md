@@ -11,13 +11,13 @@ Juego de plataformas y disparos en 2D con scroll lateral para Android, hecho en 
 - **Tres niveles** que se juegan en orden: Nivel 1 → Nivel 2 → Nivel 3. También puedes empezar cualquier nivel desde el menú de selección de niveles.
 - **Las vidas y el tiempo se conservan.** Empiezas con 3 vidas. Las vidas que te quedan al llegar a la bandera y el cronómetro pasan contigo al siguiente nivel.
 - **Los enemigos** patrullan entre puntos de ruta. Tocar uno te quita una vida, y una bala basta para matarlo.
-- **Objetos:**
-  - Vida extra: +1 vida
+- **Objetos.** Ahora mismo los niveles solo tienen objetos de vida extra. La invencibilidad y el disparo rápido están programados, pero no hay ninguno colocado en los niveles.
+  - Vida extra: +1 vida, sin límite
   - Invencibilidad: los enemigos no te hacen daño durante 5 segundos
-  - Disparo rápido: disparas más rápido durante 5 segundos
+  - Disparo rápido: disparas unas 5 veces más rápido durante 5 segundos
 - **Las zonas ocultas** aparecen cuando entras en ellas.
 - **Las plataformas móviles** te llevan mientras estás encima.
-- **Combate contra el jefe** en el Nivel 3. Al entrar en la arena se cierra una pared detrás de ti.
+- **Combate contra el jefe** en el Nivel 3. Al entrar en la arena se cierra una pared detrás de ti y la cámara se queda fija en la arena. El jefe patrulla, y cuando te acercas se gira y lanza una llamarada que te quita una vida (la invencibilidad te protege). Tocarlo no hace daño. Necesita 3 disparos, y cuando muere la cámara vuelve a seguirte hasta la bandera.
 - **Muerte:** mueres al perder tu última vida, al tocar una zona mortal (KillZone) o al caerte del nivel. Tras el Game Over vuelves a intentar el nivel con todas las vidas.
 - **Menú de pausa** para continuar, reiniciar el nivel o volver al menú principal. El volumen de la música y de los efectos se ajusta en Opciones y se guarda entre partidas.
 
@@ -25,7 +25,7 @@ Juego de plataformas y disparos en 2D con scroll lateral para Android, hecho en 
 
 | Acción | Teclado y ratón | Mando | Táctil (Android) |
 | --- | --- | --- | --- |
-| Moverse | `A` `D` / `←` `→` | Stick izquierdo / cruceta | Joystick en pantalla |
+| Moverse | `A` `D` / `←` `→` | Stick izquierdo | Joystick en pantalla |
 | Saltar (pulsa otra vez en el aire para el doble salto) | `Espacio` | Botón inferior (A / ✕) | Botón de saltar |
 | Disparar | Clic izquierdo / `Intro` | Botón izquierdo (X / □) | Botón de disparar |
 | Pausa | Botón de pausa del HUD | — | Botón de pausa del HUD |
@@ -67,7 +67,7 @@ Assets/
 ├── Scenes/          MainMenu, Level1, Level2, Level3
 ├── Scripts/         Todo el código del juego (ver más abajo)
 ├── Prefabs/         Player, HUD, GameManager, AudioManager, enemigos, objetos, plataformas...
-├── Animation/       Animator controllers y clips (Player, PickUp, Flag, UI)
+├── Animation/       Animator controllers y clips (Player, Enemy, PickUp, Flag, UI)
 ├── Audio/           Musica/ (música del menú y de los niveles), SFX/ (efectos de sonido)
 ├── Sprites/         Personajes, enemigos, objetos, fondos, tilesets
 ├── Tiles/           Paletas de tiles y tiles
@@ -80,17 +80,17 @@ Assets/
 
 | Script | Función |
 | --- | --- |
-| [PlayerMovement.cs](Assets/Scripts/PlayerMovement.cs) | Movimiento, doble salto, disparo, daño y muerte |
+| [PlayerMovement.cs](Assets/Scripts/PlayerMovement.cs) | Movimiento, doble salto, disparo, daño (`RecibirDanio`, que también usa el jefe) y muerte |
 | [GameManager.cs](Assets/Scripts/GameManager.cs) | Flujo del nivel: meta, siguiente nivel, pausa, Game Over, victoria |
 | [UIManager.cs](Assets/Scripts/UIManager.cs) | HUD (vidas, cronómetro), paneles de pausa/Game Over/victoria, botones táctiles |
 | [AudioManager.cs](Assets/Scripts/AudioManager.cs) | Música y efectos de sonido, volumen guardado |
 | [DatosPartida.cs](Assets/Scripts/DatosPartida.cs) | Datos estáticos que pasan de un nivel a otro (vidas, tiempo) |
 | [MenuPrincipal.cs](Assets/Scripts/MenuPrincipal.cs) | Menú principal: jugar, selección de niveles, opciones, salir |
 | [AjustesVolumen.cs](Assets/Scripts/AjustesVolumen.cs) | Sliders de volumen del panel de Opciones |
-| [EnemyMovement.cs](Assets/Scripts/EnemyMovement.cs) / [EnemyBoss.cs](Assets/Scripts/EnemyBoss.cs) | Enemigos que patrullan y jefe del Nivel 3 |
+| [EnemyMovement.cs](Assets/Scripts/EnemyMovement.cs) / [EnemyBoss.cs](Assets/Scripts/EnemyBoss.cs) | Enemigos que patrullan, y jefe del Nivel 3 (patrulla, ataque con llamarada y muerte) |
 | [PickUp.cs](Assets/Scripts/PickUp.cs) | Objetos de vida, invencibilidad y disparo rápido |
 | [BossZone.cs](Assets/Scripts/BossZone.cs), [ZonaOculta.cs](Assets/Scripts/ZonaOculta.cs), [PlatformMovement.cs](Assets/Scripts/PlatformMovement.cs), [Finish.cs](Assets/Scripts/Finish.cs) | Elementos del nivel: pared de la arena del jefe, zonas ocultas, plataformas móviles, transición entre niveles |
-| [CameraFollow.cs](Assets/Scripts/CameraFollow.cs), [InfiniteBackground.cs](Assets/Scripts/InfiniteBackground.cs), [Bala.cs](Assets/Scripts/Bala.cs) | Cámara, fondo con scroll, balas |
+| [CameraFollow.cs](Assets/Scripts/CameraFollow.cs), [InfiniteBackground.cs](Assets/Scripts/InfiniteBackground.cs), [Bala.cs](Assets/Scripts/Bala.cs) | Cámara (se queda fija en la arena del jefe hasta que muere), fondo con scroll, balas |
 
 Algunas cosas que conviene saber antes de tocar el código:
 
